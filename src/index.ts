@@ -13,7 +13,9 @@ app.use(express.json());
 app.use('/users', userRouter);
 app.use('/tasks', taskRouter);
 
-app.use((err: any, req: any, res: any, next: any) => {
+app.use((err: any, req: any, res: any, _next: any) => {
+  // keep `_next` parameter to preserve Express error middleware signature
+  void _next;
   console.error(err);
   res.status(err.status || 500).json({ error: err.message || 'Internal error' });
 });

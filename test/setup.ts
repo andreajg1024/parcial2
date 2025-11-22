@@ -8,7 +8,7 @@ beforeAll(async () => {
   try {
     execSync('npx prisma migrate deploy', { stdio: 'inherit' });
   } catch (e) {
-
+    console.error('migrate deploy error (ignored in test setup):', e);
   }
 });
 
